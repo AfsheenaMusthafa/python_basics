@@ -6,9 +6,8 @@ while True:
     print("2. Show Movies by Rating")
     print("3. Highest Rated Movie")
     print("4. Lowest Rated Movie")
-    print("5. Exit")
 
-    choice = input("Enter your choice (1-5): ")
+    choice = input("Enter your choice (1-4): ")
 
     if choice == "1":
         if len(movies) < 5:
@@ -47,11 +46,5 @@ while True:
         else:
             print("No movies yet.")
 
-    elif choice == "5":
-        print("Bye!")
-        break
-
     else:
         print("Invalid choice.")
-
-
