@@ -1,13 +1,14 @@
 movies = []
 
 while True:
-    print("\nTop 5 Movies")
-    print("1. Add movie")
-    print("2. Show movies by rating")
-    print("3. Show highest rated movie")
-    print("4. Show lowest rated movie")
+    print("\nTop 5 Movies Menu:")
+    print("1. Add Movie")
+    print("2. Show Movies by Rating")
+    print("3. Highest Rated Movie")
+    print("4. Lowest Rated Movie")
+    print("5. Exit")
 
-    choice = input("Enter choice (1-4): ")
+    choice = input("Enter your choice (1-5): ")
 
     if choice == "1":
         if len(movies) < 5:
@@ -19,31 +20,38 @@ while True:
             print("You can only add 5 movies.")
 
     elif choice == "2":
-        for i in range(len(movies)):
-            for j in range(i + 1, len(movies)):
-                if movies[i][1] < movies[j][1]:
-                    movies[i], movies[j] = movies[j], movies[i]
-        print("Movies sorted by rating:")
-        for m in movies:
-            print(m[0], "-", m[1])
+        if not movies:
+            print("No movies added yet.")
+        else:
+            print("\nMovies by Rating:")
+            for movie in sorted(movies, key=lambda x: x[1], reverse=True):
+                print(movie[0], "-", movie[1], "/10")
 
     elif choice == "3":
         if movies:
-            highest = movies[0]
+            best = movies[0]
             for m in movies:
-                if m[1] > highest[1]:
-                    highest = m
-            print("Highest rated movie:", highest[0], "-", highest[1])
+                if m[1] > best[1]:
+                    best = m
+            print("Highest Rated:", best[0], "-", best[1], "/10")
         else:
-            print("No movies added yet.")
+            print("No movies yet.")
 
     elif choice == "4":
         if movies:
-            lowest = movies[0]
+            worst = movies[0]
             for m in movies:
-                if m[1] < lowest[1]:
-                    lowest = m
-            print("Lowest rated movie:", lowest[0], "-", lowest[1])
+                if m[1] < worst[1]:
+                    worst = m
+            print("Lowest Rated:", worst[0], "-", worst[1], "/10")
         else:
-            print("No movies added yet.")
+            print("No movies yet.")
+
+    elif choice == "5":
+        print("Bye!")
+        break
+
+    else:
+        print("Invalid choice.")
+
 
